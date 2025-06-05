@@ -1,9 +1,10 @@
+;;; init-ibuffer.el --- ibuffer settings -*- lexical-binding: t -*-
+;;; Commentary:
+
 ;; TODO: enhance ibuffer-fontification-alist
 ;;   See http://www.reddit.com/r/emacs/comments/21fjpn/fontifying_buffer_list_for_emacs_243/
 
-(require-package 'fullframe)
-(after-load 'ibuffer
- (fullframe ibuffer ibuffer-quit))
+;;; Code:
 
 (require-package 'ibuffer-vc)
 
@@ -16,8 +17,10 @@
 
 (setq-default ibuffer-show-empty-filter-groups nil)
 
+(sanityinc/fullframe-mode 'ibuffer-mode)
 
-(after-load 'ibuffer
+
+(with-eval-after-load 'ibuffer
   ;; Use human readable Size column instead of original one
   (define-ibuffer-column size-h
     (:name "Size" :inline t)
@@ -50,3 +53,4 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (provide 'init-ibuffer)
+;;; init-ibuffer.el ends here
